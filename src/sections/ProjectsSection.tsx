@@ -1,84 +1,63 @@
 import { siteData } from "@/data/siteData";
 import { motion } from "framer-motion";
-import { ExternalLink, Folder } from "lucide-react";
-
-const container = {
-  hidden: {},
-  show: { transition: { staggerChildren: 0.1 } },
-};
-
-const item = {
-  hidden: { opacity: 0, y: 30 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-};
+import { ExternalLink, Github } from "lucide-react";
 
 export function ProjectsSection() {
   return (
-    <section id="projects" className="py-28 px-6 relative">
-      <div className="section-divider mb-28" />
-      <div className="max-w-5xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
+    <section id="projects" className="py-16 px-6">
+      <div className="max-w-3xl mx-auto">
+        <motion.h2
+          className="text-2xl font-bold tracking-tight text-foreground mb-10"
+          initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true, margin: "-80px" }}
         >
-          <p className="font-mono text-xs text-primary mb-3 tracking-widest uppercase">Projects</p>
-          <h2 className="text-4xl sm:text-5xl font-bold tracking-tight text-foreground">
-            Things I've Built
-          </h2>
-          <p className="text-muted-foreground mt-3 max-w-md">
-            A selection of projects that showcase my passion for building great software.
-          </p>
-        </motion.div>
+          Projects
+        </motion.h2>
 
-        <motion.div
-          className="grid md:grid-cols-2 gap-5 mt-14"
-          variants={container}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, margin: "-100px" }}
-        >
+        <div className="grid sm:grid-cols-2 gap-4">
           {siteData.projects.map((project, i) => (
             <motion.a
               key={project.title}
               href={project.link}
-              variants={item}
-              className="group relative block p-6 rounded-2xl border border-border bg-card/60 backdrop-blur-sm transition-all duration-500 hover:border-primary/30 border-glow hover:border-glow-hover overflow-hidden"
-              whileHover={{ y: -6, transition: { duration: 0.3 } }}
+              className="group block rounded-xl border border-border bg-card p-5 hover:border-muted-foreground/20 transition-colors"
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ delay: i * 0.08 }}
             >
-              {/* Subtle gradient on hover */}
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl" />
+              {/* Preview area */}
+              <div className="w-full h-32 rounded-lg bg-secondary mb-4 flex items-center justify-center">
+                <span className="text-muted-foreground/30 text-xs font-mono">{project.title}</span>
+              </div>
 
-              <div className="relative z-10">
-                <div className="flex items-start justify-between mb-4">
-                  <div className="p-2.5 rounded-lg bg-secondary">
-                    <Folder size={18} className="text-primary" />
-                  </div>
-                  <ExternalLink
-                    size={16}
-                    className="text-muted-foreground group-hover:text-primary transition-colors mt-1"
-                  />
-                </div>
-                <h3 className="text-lg font-bold text-foreground group-hover:text-primary transition-colors mb-2">
+              <div className="flex items-start justify-between gap-2 mb-2">
+                <h3 className="font-semibold text-foreground text-sm">
                   {project.title}
                 </h3>
-                <p className="text-muted-foreground text-sm leading-relaxed mb-5">
-                  {project.description}
-                </p>
-                <div className="flex flex-wrap gap-2">
-                  {project.tech.map((t) => (
-                    <span
-                      key={t}
-                      className="text-[11px] font-mono px-2.5 py-1 rounded-md bg-secondary/80 text-muted-foreground"
-                    >
-                      {t}
-                    </span>
-                  ))}
+                <div className="flex items-center gap-1.5 shrink-0">
+                  <ExternalLink size={13} className="text-muted-foreground" />
+                  <Github size={13} className="text-muted-foreground" />
                 </div>
+              </div>
+
+              <p className="text-muted-foreground text-xs leading-relaxed mb-3">
+                {project.description}
+              </p>
+
+              <div className="flex flex-wrap gap-1.5">
+                {project.tech.map((t) => (
+                  <span
+                    key={t}
+                    className="text-[10px] font-mono px-2 py-0.5 rounded bg-secondary text-muted-foreground border border-border"
+                  >
+                    {t}
+                  </span>
+                ))}
               </div>
             </motion.a>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );
