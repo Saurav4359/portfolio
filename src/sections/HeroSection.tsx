@@ -1,100 +1,69 @@
 import { siteData } from "@/data/siteData";
 import { motion } from "framer-motion";
-import { ArrowDown, ExternalLink } from "lucide-react";
-import heroBg from "@/assets/hero-bg.jpg";
+import { Github, Linkedin, Twitter, Mail } from "lucide-react";
 
 export function HeroSection() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center px-6 pt-16 overflow-hidden">
-      {/* Background image with overlay */}
-      <div
-        className="absolute inset-0 bg-cover bg-center opacity-40 dark:opacity-30"
-        style={{ backgroundImage: `url(${heroBg})` }}
-      />
-      {/* Radial glow */}
-      <div className="absolute inset-0 bg-gradient-radial" />
-      {/* Noise texture */}
-      <div className="absolute inset-0 bg-noise" />
+    <section className="pt-32 pb-20 px-6">
+      <div className="max-w-3xl mx-auto">
+        <motion.h1
+          className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground"
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.1 }}
+        >
+          {siteData.name}
+        </motion.h1>
 
-      {/* Animated orbs */}
-      <motion.div
-        className="absolute top-1/4 -left-32 w-96 h-96 rounded-full opacity-20 blur-[120px]"
-        style={{ background: "hsl(var(--primary))" }}
-        animate={{ x: [0, 40, 0], y: [0, -30, 0] }}
-        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-      />
-      <motion.div
-        className="absolute bottom-1/4 -right-32 w-80 h-80 rounded-full opacity-15 blur-[100px]"
-        style={{ background: "hsl(var(--accent))" }}
-        animate={{ x: [0, -30, 0], y: [0, 40, 0] }}
-        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-      />
-
-      <div className="max-w-5xl mx-auto w-full relative z-10">
         <motion.div
-          className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-border/60 bg-card/50 backdrop-blur-sm mb-8"
-          initial={{ opacity: 0, y: 20 }}
+          className="mt-4 space-y-1"
+          initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
         >
-          <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-          <span className="font-mono text-xs text-muted-foreground">Available for work</span>
+          <p className="text-muted-foreground text-base leading-relaxed">
+            {siteData.title}
+          </p>
+          <p className="text-muted-foreground text-base leading-relaxed max-w-lg">
+            {siteData.intro}
+          </p>
         </motion.div>
-
-        <motion.h1
-          className="text-5xl sm:text-7xl lg:text-[5.5rem] font-extrabold tracking-tight leading-[0.95]"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3, duration: 0.6 }}
-        >
-          <span className="text-foreground">{siteData.name.split(" ")[0]}</span>{" "}
-          <span className="text-gradient">{siteData.name.split(" ")[1]}</span>
-          <span className="text-primary">.</span>
-        </motion.h1>
-
-        <motion.p
-          className="text-xl sm:text-2xl lg:text-3xl font-semibold text-muted-foreground mt-3 tracking-tight"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4, duration: 0.6 }}
-        >
-          {siteData.title}
-        </motion.p>
-
-        <motion.p
-          className="max-w-lg text-muted-foreground mt-8 text-base sm:text-lg leading-relaxed"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.6 }}
-        >
-          {siteData.intro}
-        </motion.p>
 
         <motion.div
-          className="flex flex-wrap gap-4 mt-10"
-          initial={{ opacity: 0, y: 20 }}
+          className="flex items-center gap-3 mt-6"
+          initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.8 }}
+          transition={{ delay: 0.3 }}
         >
-          <a
-            href="#projects"
-            className="group inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-primary text-primary-foreground font-semibold text-sm hover:shadow-[0_0_30px_-5px_hsl(var(--primary)/0.5)] transition-all duration-300"
-          >
-            View Projects
-            <ArrowDown size={14} className="group-hover:translate-y-0.5 transition-transform" />
-          </a>
-          <a
-            href="#contact"
-            className="group inline-flex items-center gap-2 px-6 py-3.5 rounded-xl border border-border bg-card/50 backdrop-blur-sm text-foreground font-semibold text-sm hover:border-primary/40 transition-all duration-300"
-          >
-            Contact Me
-            <ExternalLink size={14} className="group-hover:translate-x-0.5 transition-transform" />
-          </a>
+          {[
+            { icon: Github, href: siteData.social.github },
+            { icon: Linkedin, href: siteData.social.linkedin },
+            { icon: Twitter, href: siteData.social.twitter },
+            { icon: Mail, href: `mailto:${siteData.social.email}` },
+          ].map(({ icon: Icon, href }, i) => (
+            <a
+              key={i}
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-2 text-muted-foreground hover:text-foreground transition-colors"
+            >
+              <Icon size={20} />
+            </a>
+          ))}
+        </motion.div>
+
+        <motion.div
+          className="mt-10 px-4 py-3 rounded-lg bg-secondary border border-border"
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.4 }}
+        >
+          <p className="text-sm text-muted-foreground">
+            I love designing and building thoughtful, production-grade applications.
+          </p>
         </motion.div>
       </div>
-
-      {/* Bottom fade */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent" />
     </section>
   );
 }

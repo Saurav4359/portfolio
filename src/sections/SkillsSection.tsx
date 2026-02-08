@@ -1,51 +1,48 @@
 import { siteData } from "@/data/siteData";
 import { motion } from "framer-motion";
 
-const container = {
-  hidden: {},
-  show: { transition: { staggerChildren: 0.03 } },
-};
-
-const item = {
-  hidden: { opacity: 0, y: 10, scale: 0.95 },
-  show: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.3 } },
-};
-
 export function SkillsSection() {
   return (
-    <section id="skills" className="py-28 px-6">
-      <div className="section-divider mb-28" />
-      <div className="max-w-5xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
+    <section id="skills" className="py-16 px-6">
+      <div className="max-w-3xl mx-auto">
+        <motion.h2
+          className="text-2xl font-bold tracking-tight text-foreground mb-4"
+          initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true, margin: "-80px" }}
         >
-          <p className="font-mono text-xs text-primary mb-3 tracking-widest uppercase">Skills</p>
-          <h2 className="text-4xl sm:text-5xl font-bold tracking-tight text-foreground">
-            Tech Stack
-          </h2>
-          <p className="text-muted-foreground mt-3 max-w-md">
-            Technologies I use to bring ideas to life.
+          Skills
+        </motion.h2>
+
+        <motion.div
+          className="px-4 py-3 rounded-lg bg-secondary border border-border mb-8"
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ delay: 0.1 }}
+        >
+          <p className="text-sm text-muted-foreground">
+            I love working with these technologies to build beautiful and functional applications.
           </p>
         </motion.div>
 
         <motion.div
-          className="flex flex-wrap gap-3 mt-14"
-          variants={container}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, margin: "-100px" }}
+          className="flex flex-wrap gap-2"
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ delay: 0.15 }}
         >
           {siteData.skills.map((skill) => (
-            <motion.span
+            <span
               key={skill}
-              variants={item}
-              className="px-5 py-2.5 rounded-xl border border-border bg-card/50 backdrop-blur-sm text-sm font-medium text-foreground hover:border-primary/40 hover:text-primary hover:bg-primary/5 transition-all duration-300 cursor-default border-glow"
-              whileHover={{ y: -3, transition: { duration: 0.2 } }}
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-secondary border border-border text-xs text-muted-foreground hover:text-foreground transition-colors"
             >
+              <span className="w-3.5 h-3.5 rounded bg-accent flex items-center justify-center text-[8px] font-bold text-muted-foreground">
+                {skill[0]}
+              </span>
               {skill}
-            </motion.span>
+            </span>
           ))}
         </motion.div>
       </div>
