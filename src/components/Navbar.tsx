@@ -2,7 +2,8 @@ import { Github, Linkedin, Twitter } from "lucide-react";
 import { siteData } from "@/data/siteData";
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Moon, Sun } from "lucide-react";
+import { useTheme } from "@/hooks/useTheme";
 
 const navItems = [
   { label: "Projects", href: "#projects" },
@@ -14,6 +15,7 @@ const navItems = [
 
 export function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const { theme, toggle } = useTheme();
 
   return (
     <>
@@ -43,22 +45,31 @@ export function Navbar() {
           </div>
 
           <div className="flex items-center gap-4">
-            <div className="hidden sm:flex items-center gap-3">
+            <div className="flex items-center gap-3">
               {[
-                { icon: Github, href: siteData.social.github },
-                { icon: Linkedin, href: siteData.social.linkedin },
-                { icon: Twitter, href: siteData.social.twitter },
-              ].map(({ icon: Icon, href }) => (
+                { icon: Github, href: siteData.social.github, label: "GitHub" },
+                { icon: Linkedin, href: siteData.social.linkedin, label: "LinkedIn" },
+                { icon: Twitter, href: siteData.social.twitter, label: "X" },
+              ].map(({ icon: Icon, href, label }) => (
                 <a
-                  key={href}
+                  key={label}
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-muted-foreground hover:text-foreground transition-colors"
+                  className="p-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-secondary transition-all"
+                  aria-label={label}
                 >
-                  <Icon size={15} />
+                  <Icon size={16} />
                 </a>
               ))}
+
+              <button
+                onClick={toggle}
+                className="p-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-secondary transition-all"
+                aria-label="Toggle theme"
+              >
+                {theme === "dark" ? <Sun size={16} /> : <Moon size={16} />}
+              </button>
             </div>
 
             <button
