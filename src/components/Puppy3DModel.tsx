@@ -104,15 +104,15 @@ export function Puppy3DModel({ mouseX, mouseY }: Props) {
     const dir = new THREE.Vector3().subVectors(target, pos);
     const dist = dir.length();
 
-    const isMoving = dist > 0.5;
+    const isMoving = dist > 0.3;
     isMovingRef.current = isMoving;
 
     if (isMoving) {
       dir.normalize();
-      const speed = Math.min(dist * 2.5, 8) * delta;
-      velRef.current.lerp(dir.multiplyScalar(speed), 0.15);
+      const speed = Math.min(dist * 4, 14) * delta;
+      velRef.current.lerp(dir.multiplyScalar(speed), 0.25);
     } else {
-      velRef.current.multiplyScalar(0.9);
+      velRef.current.multiplyScalar(0.85);
     }
 
     pos.add(velRef.current);
@@ -120,11 +120,11 @@ export function Puppy3DModel({ mouseX, mouseY }: Props) {
 
     // Face direction of movement
     if (isMoving && Math.abs(velRef.current.x) > 0.01) {
-      const targetRotY = velRef.current.x > 0 ? -Math.PI / 6 : Math.PI / 6;
+      const angle = Math.atan2(velRef.current.x, 0.5);
       groupRef.current.rotation.y = THREE.MathUtils.lerp(
         groupRef.current.rotation.y,
-        targetRotY,
-        0.1
+        -angle,
+        0.15
       );
     } else {
       groupRef.current.rotation.y = THREE.MathUtils.lerp(
@@ -178,7 +178,7 @@ export function Puppy3DModel({ mouseX, mouseY }: Props) {
   });
 
   return (
-    <group ref={groupRef} scale={0.4}>
+    <group ref={groupRef} scale={0.22}>
       {/* Body */}
       <mesh material={bodyMat} position={[0, 0.6, 0]}>
         <sphereGeometry args={[0.7, 24, 24]} />
