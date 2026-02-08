@@ -1,6 +1,5 @@
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { Navbar } from "@/components/Navbar";
-import { CursorPuppy } from "@/components/CursorPuppy";
 import { HeroSection } from "@/sections/HeroSection";
 import { ProjectsSection } from "@/sections/ProjectsSection";
 import { AboutSection } from "@/sections/AboutSection";
@@ -14,7 +13,6 @@ const Index = () => {
     <div className="min-h-screen bg-background text-foreground">
       <ThemeToggle />
       <Navbar />
-      <CursorPuppy />
       <main>
         <HeroSection />
         <ProjectsSection />

@@ -1,6 +1,6 @@
 import { siteData } from "@/data/siteData";
 import { motion } from "framer-motion";
-import { Mail, Send } from "lucide-react";
+import { Mail, Send, ArrowUpRight } from "lucide-react";
 import { useState } from "react";
 
 export function ContactSection() {
@@ -12,19 +12,20 @@ export function ContactSection() {
   };
 
   return (
-    <section id="contact" className="py-32 px-6">
+    <section id="contact" className="py-28 px-6">
+      <div className="section-divider mb-28" />
       <div className="max-w-2xl mx-auto text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
         >
-          <p className="font-mono text-sm text-primary mb-2">// contact</p>
+          <p className="font-mono text-xs text-primary mb-3 tracking-widest uppercase">Contact</p>
           <h2 className="text-4xl sm:text-5xl font-bold tracking-tight text-foreground">
-            Get In Touch
+            Let's Connect
           </h2>
-          <p className="text-muted-foreground mt-4 text-lg">
-            Available for meaningful work. Let's build something great together.
+          <p className="text-muted-foreground mt-4 text-base sm:text-lg max-w-md mx-auto">
+            Have a project in mind? Let's build something great together.
           </p>
         </motion.div>
 
@@ -34,7 +35,7 @@ export function ContactSection() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
-          transition={{ delay: 0.2 }}
+          transition={{ delay: 0.15 }}
         >
           <div className="grid sm:grid-cols-2 gap-4">
             <input
@@ -43,7 +44,7 @@ export function ContactSection() {
               required
               value={form.name}
               onChange={(e) => setForm({ ...form, name: e.target.value })}
-              className="w-full px-4 py-3 rounded-lg bg-secondary border border-border text-foreground placeholder:text-muted-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 transition-shadow"
+              className="w-full px-4 py-3.5 rounded-xl bg-card/60 border border-border text-foreground placeholder:text-muted-foreground/60 text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary/40 transition-all backdrop-blur-sm"
             />
             <input
               type="email"
@@ -51,37 +52,42 @@ export function ContactSection() {
               required
               value={form.email}
               onChange={(e) => setForm({ ...form, email: e.target.value })}
-              className="w-full px-4 py-3 rounded-lg bg-secondary border border-border text-foreground placeholder:text-muted-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 transition-shadow"
+              className="w-full px-4 py-3.5 rounded-xl bg-card/60 border border-border text-foreground placeholder:text-muted-foreground/60 text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary/40 transition-all backdrop-blur-sm"
             />
           </div>
           <textarea
-            placeholder="Your message..."
+            placeholder="Tell me about your project..."
             required
             rows={5}
             value={form.message}
             onChange={(e) => setForm({ ...form, message: e.target.value })}
-            className="w-full px-4 py-3 rounded-lg bg-secondary border border-border text-foreground placeholder:text-muted-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 transition-shadow resize-none"
+            className="w-full px-4 py-3.5 rounded-xl bg-card/60 border border-border text-foreground placeholder:text-muted-foreground/60 text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary/40 transition-all resize-none backdrop-blur-sm"
           />
           <button
             type="submit"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-primary text-primary-foreground font-medium text-sm hover:opacity-90 transition-opacity"
+            className="group inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-primary text-primary-foreground font-semibold text-sm hover:shadow-[0_0_30px_-5px_hsl(var(--primary)/0.5)] transition-all duration-300"
           >
             Send Message
-            <Send size={14} />
+            <Send size={14} className="group-hover:translate-x-0.5 transition-transform" />
           </button>
         </motion.form>
 
-        <motion.a
-          href={`mailto:${siteData.social.email}`}
-          className="inline-flex items-center gap-2 mt-8 text-sm text-muted-foreground hover:text-primary transition-colors"
+        <motion.div
+          className="mt-10 flex items-center justify-center gap-6"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ delay: 0.4 }}
+          transition={{ delay: 0.3 }}
         >
-          <Mail size={14} />
-          {siteData.social.email}
-        </motion.a>
+          <a
+            href={`mailto:${siteData.social.email}`}
+            className="group inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"
+          >
+            <Mail size={14} />
+            {siteData.social.email}
+            <ArrowUpRight size={12} className="opacity-0 group-hover:opacity-100 transition-opacity" />
+          </a>
+        </motion.div>
       </div>
     </section>
   );
