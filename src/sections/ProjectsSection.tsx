@@ -20,7 +20,7 @@ export function ProjectsSection() {
             <motion.a
               key={project.title}
               href={project.link}
-              className="group block rounded-xl border border-border bg-card p-5 hover:border-muted-foreground/20 transition-colors"
+              className="group block rounded-lg border border-border bg-card p-5 hover:border-accent/30 transition-colors"
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}
@@ -36,8 +36,8 @@ export function ProjectsSection() {
                   {project.title}
                 </h3>
                 <div className="flex items-center gap-1.5 shrink-0">
-                  <ExternalLink size={13} className="text-muted-foreground" />
-                  <Github size={13} className="text-muted-foreground" />
+                  <ExternalLink size={13} className="text-muted-foreground group-hover:text-accent transition-colors" />
+                  <Github size={13} className="text-muted-foreground group-hover:text-accent transition-colors" />
                 </div>
               </div>
 
@@ -62,3 +62,4 @@ export function ProjectsSection() {
     </section>
   );
 }
+

@@ -48,7 +48,7 @@ export function ContactSection() {
               required
               value={form.name}
               onChange={(e) => setForm({ ...form, name: e.target.value })}
-              className="w-full px-3 py-2.5 rounded-lg bg-secondary border border-border text-foreground placeholder:text-muted-foreground/50 text-sm focus:outline-none focus:border-muted-foreground/30 transition-colors"
+              className="w-full px-3 py-2.5 rounded-lg bg-secondary border border-border text-foreground placeholder:text-muted-foreground/50 text-sm focus:outline-none focus:border-accent/50 transition-colors"
             />
             <input
               type="email"
@@ -56,7 +56,7 @@ export function ContactSection() {
               required
               value={form.email}
               onChange={(e) => setForm({ ...form, email: e.target.value })}
-              className="w-full px-3 py-2.5 rounded-lg bg-secondary border border-border text-foreground placeholder:text-muted-foreground/50 text-sm focus:outline-none focus:border-muted-foreground/30 transition-colors"
+              className="w-full px-3 py-2.5 rounded-lg bg-secondary border border-border text-foreground placeholder:text-muted-foreground/50 text-sm focus:outline-none focus:border-accent/50 transition-colors"
             />
           </div>
           <textarea
@@ -65,11 +65,11 @@ export function ContactSection() {
             rows={4}
             value={form.message}
             onChange={(e) => setForm({ ...form, message: e.target.value })}
-            className="w-full px-3 py-2.5 rounded-lg bg-secondary border border-border text-foreground placeholder:text-muted-foreground/50 text-sm focus:outline-none focus:border-muted-foreground/30 transition-colors resize-none"
+            className="w-full px-3 py-2.5 rounded-lg bg-secondary border border-border text-foreground placeholder:text-muted-foreground/50 text-sm focus:outline-none focus:border-accent/50 transition-colors resize-none"
           />
           <button
             type="submit"
-            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-foreground text-background font-medium text-sm hover:opacity-90 transition-opacity"
+            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-accent text-background font-medium text-sm hover:opacity-90 transition-opacity"
           >
             Send
             <Send size={13} />
@@ -79,3 +79,4 @@ export function ContactSection() {
     </section>
   );
 }
+

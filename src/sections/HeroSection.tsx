@@ -1,13 +1,14 @@
 import { siteData } from "@/data/siteData";
 import { motion } from "framer-motion";
-import { Github, Linkedin, Twitter, Mail } from "lucide-react";
+import { Github, Linkedin, Mail } from "lucide-react";
+import { XIcon } from "@/components/XIcon";
 
 export function HeroSection() {
   return (
     <section className="pt-32 pb-20 px-6">
       <div className="max-w-3xl mx-auto">
         <motion.h1
-          className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground"
+          className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight mb-6"
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
@@ -16,21 +17,21 @@ export function HeroSection() {
         </motion.h1>
 
         <motion.div
-          className="mt-4 space-y-1"
+          className="space-y-3 mb-8"
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
         >
-          <p className="text-muted-foreground text-base leading-relaxed">
+          <p className="text-lg sm:text-xl text-foreground/80">
             {siteData.title}
           </p>
-          <p className="text-muted-foreground text-base leading-relaxed max-w-lg">
+          <p className="text-base text-muted-foreground leading-relaxed max-w-2xl">
             {siteData.intro}
           </p>
         </motion.div>
 
         <motion.div
-          className="flex items-center gap-3 mt-6"
+          className="flex items-center gap-3 mb-10"
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
@@ -38,7 +39,7 @@ export function HeroSection() {
           {[
             { icon: Github, href: siteData.social.github },
             { icon: Linkedin, href: siteData.social.linkedin },
-            { icon: Twitter, href: siteData.social.twitter },
+            { icon: XIcon, href: siteData.social.twitter },
             { icon: Mail, href: `mailto:${siteData.social.email}` },
           ].map(({ icon: Icon, href }, i) => (
             <a
@@ -54,7 +55,7 @@ export function HeroSection() {
         </motion.div>
 
         <motion.div
-          className="mt-10 px-4 py-3 rounded-lg bg-secondary border border-border"
+          className="px-4 py-3 rounded-lg bg-secondary/50 border border-border"
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4 }}
@@ -67,3 +68,4 @@ export function HeroSection() {
     </section>
   );
 }
+

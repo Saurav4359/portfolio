@@ -15,7 +15,7 @@ export function SkillsSection() {
         </motion.h2>
 
         <motion.div
-          className="px-4 py-3 rounded-lg bg-secondary border border-border mb-8"
+          className="px-4 py-3 rounded-lg bg-secondary/50 border border-border mb-8"
           initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
@@ -36,11 +36,8 @@ export function SkillsSection() {
           {siteData.skills.map((skill) => (
             <span
               key={skill}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-secondary border border-border text-xs text-muted-foreground hover:text-foreground transition-colors"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-secondary border border-border text-xs text-muted-foreground hover:text-foreground hover:border-accent/30 transition-colors"
             >
-              <span className="w-3.5 h-3.5 rounded bg-accent flex items-center justify-center text-[8px] font-bold text-muted-foreground">
-                {skill[0]}
-              </span>
               {skill}
             </span>
           ))}
@@ -49,3 +46,4 @@ export function SkillsSection() {
     </section>
   );
 }
+

@@ -1,8 +1,8 @@
 export const siteData = {
-  name: "Alex Chen",
+  name: "Saurav Sharma",
   title: "Engineer / Developer / Builder",
   intro:
-    "I craft performant, elegant web experiences with clean code and thoughtful design. Passionate about open source, developer tools, and pushing the boundaries of what's possible on the web.",
+    "I'm a 19-year-old developer who crafts performant, elegant web experiences with clean code and thoughtful design. Passionate about open source, developer tools, and pushing the boundaries of what's possible on the web.",
   about: {
     bio: "I'm a full-stack engineer with 5+ years of experience building products that people love. I specialize in modern JavaScript/TypeScript ecosystems, with deep expertise in React, Node.js, and cloud infrastructure. When I'm not coding, I'm probably tinkering with mechanical keyboards or exploring new coffee shops.",
     values: [
@@ -93,9 +93,9 @@ export const siteData = {
     },
   ],
   social: {
-    github: "https://github.com",
-    linkedin: "https://linkedin.com",
-    twitter: "https://twitter.com",
-    email: "hello@alexchen.dev",
+    github: "https://github.com/Saurav4359",
+    linkedin: "https://www.linkedin.com/in/saurav-sharma-1b7321247/",
+    twitter: "https://x.com/saurav_twts",
+    email: "isauravsharmaokay4359@gmail.com",
   },
 };

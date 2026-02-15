@@ -1,6 +1,5 @@
 import { siteData } from "@/data/siteData";
 import { motion } from "framer-motion";
-import { ChevronDown } from "lucide-react";
 
 export function ExperienceSection() {
   return (
@@ -27,7 +26,7 @@ export function ExperienceSection() {
             >
               <div className="flex items-center justify-between gap-4">
                 <div className="flex items-center gap-3">
-                  <div className="w-9 h-9 rounded-lg bg-secondary border border-border flex items-center justify-center text-xs font-bold text-muted-foreground">
+                  <div className="w-10 h-10 rounded-lg bg-secondary border border-border flex items-center justify-center text-sm font-bold text-foreground">
                     {exp.company[0]}
                   </div>
                   <div>
@@ -47,3 +46,4 @@ export function ExperienceSection() {
     </section>
   );
 }
+
