@@ -55,13 +55,13 @@ export function HeroSection() {
         </motion.div>
 
         <motion.div
-          className="px-4 py-3 rounded-lg bg-secondary/50 border border-border"
+          className="px-4 py-3 rounded-lg bg-secondary/50 border border-border shadow-card-light"
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4 }}
         >
           <p className="text-sm text-muted-foreground">
-            I love designing and building thoughtful, production-grade applications.
+            Open to opportunities. I love designing and building thoughtful applications.
           </p>
         </motion.div>
       </div>

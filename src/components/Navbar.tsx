@@ -2,11 +2,12 @@ import { Github, Linkedin, Mail } from "lucide-react";
 import { siteData } from "@/data/siteData";
 import { motion } from "framer-motion";
 import { XIcon } from "@/components/XIcon";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 export function Navbar() {
   return (
     <motion.nav
-      className="fixed top-0 left-0 right-0 z-40 bg-background/80 backdrop-blur-md border-b border-border"
+      className="fixed top-0 left-0 right-0 z-40 bg-background/80 backdrop-blur-md border-b border-border shadow-nav-light"
       initial={{ y: -60 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.4 }}
@@ -21,7 +22,7 @@ export function Navbar() {
           <div className="hidden sm:flex items-center gap-6">
             {[
               { label: "Projects", href: "#projects" },
-              { label: "Experience", href: "#experience" },
+              { label: "Skills", href: "#skills" },
               { label: "Contact", href: "#contact" },
             ].map((item) => (
               <a
@@ -37,6 +38,7 @@ export function Navbar() {
           <div className="h-5 w-px bg-border hidden sm:block" />
 
           <div className="flex items-center gap-2">
+            <ThemeToggle />
             {[
               { icon: Github, href: siteData.social.github, label: "GitHub" },
               { icon: Linkedin, href: siteData.social.linkedin, label: "LinkedIn" },

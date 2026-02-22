@@ -20,15 +20,23 @@ export function ProjectsSection() {
             <motion.a
               key={project.title}
               href={project.link}
-              className="group block rounded-lg border border-border bg-card p-5 hover:border-accent/30 transition-colors"
+              className="group block rounded-lg border border-border bg-card p-5 hover:border-accent/30 transition-colors shadow-card-light"
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}
               transition={{ delay: i * 0.08 }}
             >
               {/* Preview area */}
-              <div className="w-full h-32 rounded-lg bg-secondary mb-4 flex items-center justify-center">
-                <span className="text-muted-foreground/30 text-xs font-mono">{project.title}</span>
+              <div className="w-full h-32 rounded-lg bg-secondary mb-4 flex items-center justify-center overflow-hidden">
+                {project.image ? (
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-full object-cover"
+                  />
+                ) : (
+                  <span className="text-muted-foreground/30 text-xs font-mono">{project.title}</span>
+                )}
               </div>
 
               <div className="flex items-start justify-between gap-2 mb-2">
@@ -49,7 +57,7 @@ export function ProjectsSection() {
                 {project.tech.map((t) => (
                   <span
                     key={t}
-                    className="text-[10px] font-mono px-2 py-0.5 rounded bg-secondary text-muted-foreground border border-border"
+                    className="text-[10px] font-mono px-2 py-0.5 rounded bg-secondary text-muted-foreground border border-border shadow-input-light"
                   >
                     {t}
                   </span>
