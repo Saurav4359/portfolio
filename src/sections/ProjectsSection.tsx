@@ -16,58 +16,66 @@ export function ProjectsSection() {
         </motion.h2>
 
         <div className="grid sm:grid-cols-2 gap-4">
-          {siteData.projects.map((project, i) => (
-            <motion.a
-              key={project.title}
-              href={project.link}
-              className="group block rounded-lg border border-border bg-card p-5 hover:border-accent/30 transition-colors shadow-card-light"
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ delay: i * 0.08 }}
-            >
-              {/* Preview area */}
-              <div className="w-full h-32 rounded-lg bg-secondary mb-4 flex items-center justify-center overflow-hidden">
-                {project.image ? (
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-full object-cover"
-                  />
-                ) : (
-                  <span className="text-muted-foreground/30 text-xs font-mono">{project.title}</span>
-                )}
-              </div>
+          {siteData.projects.map((project, i) => {
+            const href = (project as any).link || (project as any).repo || "#";
+            const isRepoOnly = !(project as any).link && !!(project as any).repo;
 
-              <div className="flex items-start justify-between gap-2 mb-2">
-                <h3 className="font-semibold text-foreground text-sm">
-                  {project.title}
-                </h3>
-                <div className="flex items-center gap-1.5 shrink-0">
-                  <ExternalLink size={13} className="text-muted-foreground group-hover:text-accent transition-colors" />
-                  <Github size={13} className="text-muted-foreground group-hover:text-accent transition-colors" />
+            return (
+              <motion.a
+                key={project.title}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group block rounded-lg border border-border bg-card p-5 hover:border-accent/30 transition-colors shadow-card-light"
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-80px" }}
+                transition={{ delay: i * 0.08 }}
+              >
+                {/* Preview area */}
+                <div className={`w-full ${(project as any).previewHeight ?? 'h-32'} rounded-lg bg-secondary mb-4 flex items-center justify-center overflow-hidden`}>
+                  {project.image ? (
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-full object-contain"
+                    />
+                  ) : (
+                    <span className="text-muted-foreground/30 text-xs font-mono">{project.title}</span>
+                  )}
                 </div>
-              </div>
 
-              <p className="text-muted-foreground text-xs leading-relaxed mb-3">
-                {project.description}
-              </p>
+                <div className="flex items-start justify-between gap-2 mb-2">
+                  <h3 className="font-semibold text-foreground text-sm">
+                    {project.title}
+                  </h3>
+                  <div className="flex items-center gap-1.5 shrink-0">
+                    {!isRepoOnly && (
+                      <ExternalLink size={13} className="text-muted-foreground group-hover:text-accent transition-colors" />
+                    )}
+                    <Github size={13} className="text-muted-foreground group-hover:text-accent transition-colors" />
+                  </div>
+                </div>
 
-              <div className="flex flex-wrap gap-1.5">
-                {project.tech.map((t) => (
-                  <span
-                    key={t}
-                    className="text-[10px] font-mono px-2 py-0.5 rounded bg-secondary text-muted-foreground border border-border shadow-input-light"
-                  >
-                    {t}
-                  </span>
-                ))}
-              </div>
-            </motion.a>
-          ))}
+                <p className="text-muted-foreground text-xs leading-relaxed mb-3">
+                  {project.description}
+                </p>
+
+                <div className="flex flex-wrap gap-1.5">
+                  {project.tech.map((t) => (
+                    <span
+                      key={t}
+                      className="text-[10px] font-mono px-2 py-0.5 rounded bg-secondary text-muted-foreground border border-border shadow-input-light"
+                    >
+                      {t}
+                    </span>
+                  ))}
+                </div>
+              </motion.a>
+            );
+          })}
         </div>
       </div>
     </section>
   );
 }
-

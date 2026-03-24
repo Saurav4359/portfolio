@@ -1,4 +1,5 @@
 import brainlyImg from "@/images/brainly.png";
+import squizImg from "@/images/squiz.png";
 
 export const siteData = {
   name: "Saurav Sharma",
@@ -21,6 +22,15 @@ export const siteData = {
       tech: ["React", "TypeScript", "Bun", "Express", "PostgreSQL", "Prisma", "BullMQ", "JWT", "Supabase Storage", "Zod"],
       link: "https://github.com/Saurav4359/CodeRift",
       image: "",
+    },
+    {
+      title: "Squiz (SeekerRank)",
+      description:
+        "High-performance real-time multiplayer quiz battle built on Solana. Connect your wallet, stake tokens, and go head-to-head in sub-100ms latency trivia matches with live opponent progress and trustless Anchor smart contract escrow—winner takes all.",
+      tech: ["React Native", "Expo", "TypeScript", "Solana", "Anchor", "Socket.io", "Bun", "Neon PostgreSQL", "Zustand", "MMKV"],
+      repo: "https://github.com/Saurav4359/squiz",
+      image: squizImg,
+      previewHeight: "h-56",
     },
     {
       title: "Brainly",
