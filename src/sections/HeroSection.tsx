@@ -10,7 +10,8 @@ export function HeroSection() {
         <motion.h1
           className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight mb-6"
           initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
           transition={{ delay: 0.1 }}
         >
           {siteData.name}
@@ -19,7 +20,8 @@ export function HeroSection() {
         <motion.div
           className="space-y-3 mb-8"
           initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
           transition={{ delay: 0.2 }}
         >
           <p className="text-lg sm:text-xl text-foreground/80">
@@ -33,7 +35,8 @@ export function HeroSection() {
         <motion.div
           className="flex items-center gap-3 mb-10"
           initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
           transition={{ delay: 0.3 }}
         >
           {[
@@ -57,7 +60,8 @@ export function HeroSection() {
         <motion.div
           className="px-4 py-3 rounded-lg bg-secondary/50 border border-border shadow-card-light"
           initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
           transition={{ delay: 0.4 }}
         >
           <p className="text-sm text-muted-foreground">
