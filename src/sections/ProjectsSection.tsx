@@ -26,12 +26,20 @@ export function ProjectsSection() {
                 href={href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group block rounded-lg border border-border bg-card p-5 hover:border-accent/30 transition-colors shadow-card-light"
+                className="group relative block overflow-hidden rounded-lg border border-border/80 bg-card p-5 shadow-card-light transition-all duration-300 hover:-translate-y-0.5 hover:border-accent/60 hover:shadow-[0_0_0_1px_hsl(var(--accent)/0.24),0_18px_40px_hsl(var(--accent)/0.12)]"
                 initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-80px" }}
                 transition={{ delay: i * 0.08 }}
               >
+                <span
+                  aria-hidden="true"
+                  className="pointer-events-none absolute inset-x-6 top-0 h-px bg-gradient-to-r from-transparent via-accent/80 to-transparent opacity-70 transition-opacity duration-300 group-hover:opacity-100"
+                />
+                <span
+                  aria-hidden="true"
+                  className="pointer-events-none absolute inset-0 rounded-lg ring-1 ring-transparent transition duration-300 group-hover:ring-accent/20"
+                />
                 {/* Preview area */}
                 <div className={`w-full ${(project as any).previewHeight ?? 'h-32'} rounded-lg bg-secondary mb-4 flex items-center justify-center overflow-hidden`}>
                   {project.image ? (
