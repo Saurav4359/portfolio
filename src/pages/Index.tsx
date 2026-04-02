@@ -7,9 +7,16 @@ import { Footer } from "@/sections/Footer";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="portfolio-shell min-h-screen bg-background text-foreground">
+      <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden" aria-hidden="true">
+        <div className="portfolio-aurora portfolio-aurora-left" />
+        <div className="portfolio-aurora portfolio-aurora-right" />
+        <div className="portfolio-spotlight" />
+        <div className="portfolio-grid" />
+        <div className="portfolio-noise" />
+      </div>
       <Navbar />
-      <main>
+      <main className="relative z-10">
         <HeroSection />
         <ProjectsSection />
         <SkillsSection />
@@ -21,4 +28,3 @@ const Index = () => {
 };
 
 export default Index;
-
