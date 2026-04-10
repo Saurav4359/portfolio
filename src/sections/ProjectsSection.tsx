@@ -1,6 +1,110 @@
+import { useEffect, useRef, useState } from "react";
+
 import { siteData } from "@/data/siteData";
 import { motion } from "framer-motion";
 import { ExternalLink, Github } from "lucide-react";
+
+function ProjectPreview({ project }: { project: any }) {
+  const previewRef = useRef<HTMLDivElement | null>(null);
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+  const [isVisible, setIsVisible] = useState(false);
+  const [isVideoReady, setIsVideoReady] = useState(false);
+  const videoSrc = (project as any).video;
+  const videoStartAt = (project as any).videoStartAt ?? 0;
+
+  useEffect(() => {
+    const node = previewRef.current;
+    if (!node) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsVisible(entry.isIntersecting);
+      },
+      { threshold: 0.2 }
+    );
+
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video || !isVisible || !videoSrc) return;
+
+    setIsVideoReady(false);
+
+    const seekToStart = () => {
+      if (video.duration > videoStartAt) {
+        video.currentTime = videoStartAt;
+      }
+    };
+
+    if (video.readyState >= 1) {
+      seekToStart();
+      video.play().catch(() => {});
+      return;
+    }
+
+    const onLoadedMetadata = () => {
+      seekToStart();
+      video.play().catch(() => {});
+    };
+
+    video.addEventListener("loadedmetadata", onLoadedMetadata);
+    return () => video.removeEventListener("loadedmetadata", onLoadedMetadata);
+  }, [isVisible, videoSrc, videoStartAt]);
+
+  return (
+    <div
+      ref={previewRef}
+      className={`w-full ${(project as any).previewHeight ?? "h-32"} rounded-lg bg-secondary mb-4 flex items-center justify-center overflow-hidden`}
+    >
+      {(project as any).video && isVisible ? (
+        <video
+          ref={videoRef}
+          src={(project as any).video}
+          autoPlay
+          muted
+          playsInline
+          preload="auto"
+          poster={project.image}
+          onLoadedMetadata={() => setIsVideoReady(true)}
+          onCanPlay={() => setIsVideoReady(true)}
+          onSeeked={() => setIsVideoReady(true)}
+          onTimeUpdate={() => {
+            const video = videoRef.current;
+            if (!video || !video.duration || video.currentTime < video.duration - 0.15) {
+              return;
+            }
+
+            video.currentTime = videoStartAt;
+            video.play().catch(() => {});
+          }}
+          onEnded={() => {
+            const video = videoRef.current;
+            if (!video) return;
+            video.currentTime = videoStartAt;
+            video.play().catch(() => {});
+          }}
+          className={`w-full h-full object-cover transition-opacity duration-300 ${
+            isVideoReady ? "opacity-100" : "opacity-0"
+          }`}
+        />
+      ) : project.image ? (
+        <img
+          src={project.image}
+          alt={project.title}
+          loading="lazy"
+          className="w-full h-full object-contain"
+        />
+      ) : (
+        <span className="text-muted-foreground/30 text-xs font-mono">
+          {project.title}
+        </span>
+      )}
+    </div>
+  );
+}
 
 export function ProjectsSection() {
   return (
@@ -40,18 +144,7 @@ export function ProjectsSection() {
                   aria-hidden="true"
                   className="pointer-events-none absolute inset-0 rounded-lg ring-1 ring-transparent transition duration-300 group-hover:ring-accent/20"
                 />
-                {/* Preview area */}
-                <div className={`w-full ${(project as any).previewHeight ?? 'h-32'} rounded-lg bg-secondary mb-4 flex items-center justify-center overflow-hidden`}>
-                  {project.image ? (
-                    <img
-                      src={project.image}
-                      alt={project.title}
-                      className="w-full h-full object-contain"
-                    />
-                  ) : (
-                    <span className="text-muted-foreground/30 text-xs font-mono">{project.title}</span>
-                  )}
-                </div>
+                <ProjectPreview project={project} />
 
                 <div className="flex items-start justify-between gap-2 mb-2">
                   <h3 className="font-semibold text-foreground text-sm">

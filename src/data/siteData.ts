@@ -1,4 +1,5 @@
 import brainlyImg from "@/images/brainly.png";
+import brainlyVideo from "@/assets/Brainly-Video-compressed.mp4";
 import squizImg from "@/images/squiz.png";
 
 export const siteData = {
@@ -39,6 +40,9 @@ export const siteData = {
       tech: ["React", "TypeScript", "Vite", "Node.js", "Express", "MongoDB", "Zod"],
       link: "https://brainly-fe-alpha.vercel.app/",
       image: brainlyImg,
+      video: brainlyVideo,
+      videoStartAt: 1,
+      previewHeight: "h-[11.52rem]",
     },
   ],
   skills: [
