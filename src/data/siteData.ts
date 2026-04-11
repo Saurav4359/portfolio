@@ -1,5 +1,5 @@
-import brainlyImg from "@/images/brainly.png";
 import brainlyVideo from "@/assets/Brainly-Video-compressed.mp4";
+import codeRiftVideo from "@/assets/CodeRift-compressed-video.mp4";
 import squizImg from "@/images/squiz.png";
 
 export const siteData = {
@@ -22,7 +22,8 @@ export const siteData = {
         "A competitive coding platform and arena where developers can practice algorithms, compete in real-time challenges, and improve their problem-solving skills.",
       tech: ["React", "TypeScript", "Bun", "Express", "PostgreSQL", "Prisma", "BullMQ", "JWT", "Supabase Storage", "Zod"],
       link: "https://github.com/Saurav4359/CodeRift",
-      image: "",
+      video: codeRiftVideo,
+      previewHeight: "h-[11.52rem]",
     },
     {
       title: "Brainly",
@@ -30,7 +31,6 @@ export const siteData = {
         "A second-brain app that lets you save and organize the stuff your mind doesn’t have time to remember like YouTube videos, tweets, articles, ideas, whatever—so you can come back to it when it actually matters.",
       tech: ["React", "TypeScript", "Vite", "Node.js", "Express", "MongoDB", "Zod"],
       link: "https://brainly-fe-alpha.vercel.app/",
-      image: brainlyImg,
       video: brainlyVideo,
       videoStartAt: 1,
       previewHeight: "h-[11.52rem]",
