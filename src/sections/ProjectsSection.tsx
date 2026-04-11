@@ -11,6 +11,7 @@ function ProjectPreview({ project }: { project: any }) {
   const [isVideoReady, setIsVideoReady] = useState(false);
   const videoSrc = (project as any).video;
   const videoStartAt = (project as any).videoStartAt ?? 0;
+  const videoObjectClass = (project as any).videoObjectClass ?? "object-cover";
 
   useEffect(() => {
     const node = previewRef.current;
@@ -86,7 +87,7 @@ function ProjectPreview({ project }: { project: any }) {
             video.currentTime = videoStartAt;
             video.play().catch(() => {});
           }}
-          className={`w-full h-full object-cover transition-opacity duration-300 ${
+          className={`w-full h-full ${videoObjectClass} transition-opacity duration-300 ${
             isVideoReady ? "opacity-100" : "opacity-0"
           }`}
         />

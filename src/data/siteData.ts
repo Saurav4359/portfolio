@@ -1,5 +1,6 @@
 import brainlyVideo from "@/assets/Brainly-Video-compressed.mp4";
 import codeRiftVideo from "@/assets/CodeRift-compressed-video.mp4";
+import squizVideo from "@/assets/Squiz.mov";
 import squizImg from "@/images/squiz.png";
 
 export const siteData = {
@@ -38,10 +39,12 @@ export const siteData = {
     {
       title: "Squiz (SeekerRank)",
       description:
-        "High-performance real-time multiplayer quiz battle built on Solana. Connect your wallet, stake tokens, and go head-to-head in sub-100ms latency trivia matches with live opponent progress and trustless Anchor smart contract escrow—winner takes all.",
+        "High-performance real-time multiplayer quiz battle built on Solana. Connect your wallet, stake tokens, and go head-to-head in sub-100ms latency trivia matches with live opponent progress and treasury-backed winner-takes-all payouts.",
       tech: ["React Native", "Expo", "TypeScript", "Solana", "Anchor", "Socket.io", "Bun", "Neon PostgreSQL", "Zustand", "MMKV"],
       repo: "https://github.com/Saurav4359/squiz",
       image: squizImg,
+      videoObjectClass: "object-contain",
+      video: squizVideo,
       previewHeight: "h-56",
     },
   ],
