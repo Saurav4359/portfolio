@@ -109,7 +109,7 @@ function ProjectPreview({ project }: { project: any }) {
 
 export function ProjectsSection() {
   return (
-    <section id="projects" className="py-16 px-6">
+    <section id="projects" className="pt-8 pb-16 px-6">
       <div className="max-w-3xl mx-auto">
         <motion.h2
           className="text-2xl font-bold tracking-tight text-foreground mb-10"

@@ -5,7 +5,7 @@ import { XIcon } from "@/components/XIcon";
 
 export function HeroSection() {
   return (
-    <section className="pt-32 pb-20 px-6">
+    <section className="pt-32 pb-10 px-6">
       <div className="max-w-3xl mx-auto">
         <motion.h1
           className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight mb-6"
@@ -61,11 +61,10 @@ export function HeroSection() {
           transition={{ delay: 0.4 }}
         >
           <p className="text-sm text-muted-foreground">
-            Open to opportunities. I love designing and building thoughtful applications.
+            Open to opportunities. I enjoy building backend-heavy products, developer tooling, and reliable systems.
           </p>
         </motion.div>
       </div>
     </section>
   );
 }
-

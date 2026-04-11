@@ -7,7 +7,7 @@ export const siteData = {
   name: "Saurav Sharma",
   title: "Developer / Builder",
   intro:
-    "I'm a 19-year-old developer who crafts performant, elegant web experiences with clean code and thoughtful design. Passionate about open source, developer tools, and pushing the boundaries of what's possible on the web.",
+    "I'm a 19-year-old developer focused on backend-heavy systems, real-time products, and clean, reliable engineering. Passionate about open source, developer tools, and building software that feels fast and intentional.",
   about: {
     bio: "I'm a developer who loves building things from scratch. I focus on modern JavaScript/TypeScript, React, and Node.js—always learning and shipping. When I'm not coding, I'm probably tinkering with mechanical keyboards or exploring new coffee shops.",
     values: [
