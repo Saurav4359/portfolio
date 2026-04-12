@@ -13,7 +13,7 @@ export function Navbar() {
       transition={{ duration: 0.4 }}
     >
       <div className="max-w-3xl mx-auto px-6 h-16 flex items-center justify-between">
-        <a href="#" className="text-base font-semibold text-foreground tracking-tight hover:text-accent transition-colors">
+        <a href="#" aria-label="Go to top" className="text-base font-semibold text-foreground tracking-tight hover:text-accent transition-colors">
           {siteData.name.split(" ")[0].toLowerCase()}
           <span className="text-muted-foreground">.</span>
         </a>
@@ -52,6 +52,7 @@ export function Navbar() {
                 rel={label !== "Email" ? "noopener noreferrer" : undefined}
                 className="p-2 text-muted-foreground hover:text-foreground transition-colors"
                 aria-label={label}
+                title={label}
               >
                 <Icon size={16} />
               </a>
@@ -62,4 +63,3 @@ export function Navbar() {
     </motion.nav>
   );
 }
-

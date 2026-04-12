@@ -9,6 +9,7 @@ function ProjectPreview({ project }: { project: any }) {
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const [isVisible, setIsVisible] = useState(false);
   const [isVideoReady, setIsVideoReady] = useState(false);
+  const title = project.title;
   const videoSrc = (project as any).video;
   const videoStartAt = (project as any).videoStartAt ?? 0;
   const videoObjectClass = (project as any).videoObjectClass ?? "object-cover";
@@ -58,6 +59,7 @@ function ProjectPreview({ project }: { project: any }) {
   return (
     <div
       ref={previewRef}
+      aria-label={`${title} preview`}
       className={`w-full ${(project as any).previewHeight ?? "h-32"} rounded-lg bg-secondary mb-4 flex items-center justify-center overflow-hidden`}
     >
       {(project as any).video && isVisible ? (
@@ -69,6 +71,7 @@ function ProjectPreview({ project }: { project: any }) {
           playsInline
           preload="auto"
           poster={project.image}
+          aria-label={`${title} demo video`}
           onLoadedMetadata={() => setIsVideoReady(true)}
           onCanPlay={() => setIsVideoReady(true)}
           onSeeked={() => setIsVideoReady(true)}
@@ -96,6 +99,7 @@ function ProjectPreview({ project }: { project: any }) {
           src={project.image}
           alt={project.title}
           loading="lazy"
+          decoding="async"
           className="w-full h-full object-contain"
         />
       ) : (
@@ -131,6 +135,7 @@ export function ProjectsSection() {
                 href={href}
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label={`${project.title} project link`}
                 className="group relative block overflow-hidden rounded-lg border border-border/80 bg-card p-5 shadow-card-light transition-all duration-300 hover:-translate-y-0.5 hover:border-accent/60 hover:shadow-[0_0_0_1px_hsl(var(--accent)/0.24),0_18px_40px_hsl(var(--accent)/0.12)]"
                 initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
