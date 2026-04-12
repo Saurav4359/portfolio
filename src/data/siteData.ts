@@ -1,6 +1,6 @@
 import brainlyVideo from "@/assets/Brainly-Video-compressed.mp4";
 import codeRiftVideo from "@/assets/CodeRift-compressed-video.mp4";
-import squizVideo from "@/assets/Squiz.mov";
+import squizVideo from "@/assets/Squiz-compressed.mp4";
 import squizImg from "@/images/squiz.png";
 
 export const siteData = {
@@ -43,9 +43,8 @@ export const siteData = {
       tech: ["React Native", "Expo", "TypeScript", "Solana", "Anchor", "Socket.io", "Bun", "Neon PostgreSQL", "Zustand", "MMKV"],
       repo: "https://github.com/Saurav4359/squiz",
       image: squizImg,
-      videoObjectClass: "object-contain",
       video: squizVideo,
-      previewHeight: "h-56",
+      previewHeight: "h-[11.52rem]",
     },
   ],
   skills: [
