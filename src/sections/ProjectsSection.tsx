@@ -22,7 +22,7 @@ function ProjectPreview({ project }: { project: any }) {
       ([entry]) => {
         setIsVisible(entry.isIntersecting);
       },
-      { threshold: 0.2 }
+      { threshold: 0.2 },
     );
 
     observer.observe(node);
@@ -77,7 +77,11 @@ function ProjectPreview({ project }: { project: any }) {
           onSeeked={() => setIsVideoReady(true)}
           onTimeUpdate={() => {
             const video = videoRef.current;
-            if (!video || !video.duration || video.currentTime < video.duration - 0.15) {
+            if (
+              !video ||
+              !video.duration ||
+              video.currentTime < video.duration - 0.15
+            ) {
               return;
             }
 
@@ -127,7 +131,20 @@ export function ProjectsSection() {
         <div className="grid sm:grid-cols-2 gap-4">
           {siteData.projects.map((project, i) => {
             const href = (project as any).link || (project as any).repo || "#";
-            const isRepoOnly = !(project as any).link && !!(project as any).repo;
+            const isRepoOnly =
+              !(project as any).link && !!(project as any).repo;
+            const repoHref = (project as any).repo;
+            const isBrainly = project.title === "Brainly";
+
+            const handleGithubClick = (
+              e: React.MouseEvent<HTMLAnchorElement>,
+            ) => {
+              e.preventDefault();
+              e.stopPropagation();
+              if (repoHref) {
+                window.open(repoHref, "_blank", "noopener,noreferrer");
+              }
+            };
 
             return (
               <motion.a
@@ -158,9 +175,31 @@ export function ProjectsSection() {
                   </h3>
                   <div className="flex items-center gap-1.5 shrink-0">
                     {!isRepoOnly && (
-                      <ExternalLink size={13} className="text-muted-foreground group-hover:text-accent transition-colors" />
+                      <ExternalLink
+                        size={13}
+                        className="text-muted-foreground group-hover:text-accent transition-colors"
+                      />
                     )}
-                    <Github size={13} className="text-muted-foreground group-hover:text-accent transition-colors" />
+                    {isBrainly && repoHref ? (
+                      <a
+                        href={repoHref}
+                        onClick={handleGithubClick}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`${project.title} GitHub repository`}
+                        className="cursor-pointer hover:text-accent transition-colors"
+                      >
+                        <Github
+                          size={13}
+                          className="text-muted-foreground group-hover:text-accent transition-colors"
+                        />
+                      </a>
+                    ) : (
+                      <Github
+                        size={13}
+                        className="text-muted-foreground group-hover:text-accent transition-colors"
+                      />
+                    )}
                   </div>
                 </div>
 
