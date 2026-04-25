@@ -73,7 +73,6 @@ export const siteData = {
         "MMKV",
       ],
       repo: "https://github.com/Saurav4359/squiz",
-      link: "https://squiz.app",
       image: squizImg,
       video: squizVideo,
       previewHeight: "h-[11.52rem]",
